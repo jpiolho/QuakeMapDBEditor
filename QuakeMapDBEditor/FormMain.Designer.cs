@@ -1,0 +1,299 @@
+﻿
+namespace QuakeMapDBEditor
+{
+    partial class FormMain
+    {
+        /// <summary>
+        ///  Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        ///  Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxEpisodes = new System.Windows.Forms.ComboBox();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonAddEpisode = new System.Windows.Forms.Button();
+            this.buttonEditEpisode = new System.Windows.Forms.Button();
+            this.buttonDeleteEpisode = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.listBoxMaps = new System.Windows.Forms.ListBox();
+            this.labelMaps = new System.Windows.Forms.Label();
+            this.buttonAddMap = new System.Windows.Forms.Button();
+            this.buttonEditMap = new System.Windows.Forms.Button();
+            this.buttonDeleteMap = new System.Windows.Forms.Button();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.menuStrip.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 15);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Episode:";
+            // 
+            // comboBoxEpisodes
+            // 
+            this.comboBoxEpisodes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxEpisodes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEpisodes.FormattingEnabled = true;
+            this.comboBoxEpisodes.Location = new System.Drawing.Point(69, 27);
+            this.comboBoxEpisodes.Name = "comboBoxEpisodes";
+            this.comboBoxEpisodes.Size = new System.Drawing.Size(312, 23);
+            this.comboBoxEpisodes.TabIndex = 1;
+            this.comboBoxEpisodes.SelectedIndexChanged += new System.EventHandler(this.comboBoxEpisodes_SelectedIndexChanged);
+            // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(480, 24);
+            this.menuStrip.TabIndex = 2;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem,
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.newToolStripMenuItem.Text = "New";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.openToolStripMenuItem.Text = "Open...";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveAsToolStripMenuItem.Text = "Save As...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(120, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // buttonAddEpisode
+            // 
+            this.buttonAddEpisode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAddEpisode.Image = global::QuakeMapDBEditor.Properties.Resources.Add_16x;
+            this.buttonAddEpisode.Location = new System.Drawing.Point(387, 27);
+            this.buttonAddEpisode.Name = "buttonAddEpisode";
+            this.buttonAddEpisode.Size = new System.Drawing.Size(23, 23);
+            this.buttonAddEpisode.TabIndex = 3;
+            this.toolTip.SetToolTip(this.buttonAddEpisode, "Add episode...");
+            this.buttonAddEpisode.UseVisualStyleBackColor = true;
+            this.buttonAddEpisode.Click += new System.EventHandler(this.buttonAddEpisode_Click);
+            // 
+            // buttonEditEpisode
+            // 
+            this.buttonEditEpisode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonEditEpisode.Image = global::QuakeMapDBEditor.Properties.Resources.Edit_16x;
+            this.buttonEditEpisode.Location = new System.Drawing.Point(416, 27);
+            this.buttonEditEpisode.Name = "buttonEditEpisode";
+            this.buttonEditEpisode.Size = new System.Drawing.Size(23, 23);
+            this.buttonEditEpisode.TabIndex = 4;
+            this.toolTip.SetToolTip(this.buttonEditEpisode, "Edit episode...");
+            this.buttonEditEpisode.UseVisualStyleBackColor = true;
+            this.buttonEditEpisode.Click += new System.EventHandler(this.buttonEditEpisode_Click);
+            // 
+            // buttonDeleteEpisode
+            // 
+            this.buttonDeleteEpisode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDeleteEpisode.Image = global::QuakeMapDBEditor.Properties.Resources.Trash_16x;
+            this.buttonDeleteEpisode.Location = new System.Drawing.Point(445, 27);
+            this.buttonDeleteEpisode.Name = "buttonDeleteEpisode";
+            this.buttonDeleteEpisode.Size = new System.Drawing.Size(23, 23);
+            this.buttonDeleteEpisode.TabIndex = 5;
+            this.toolTip.SetToolTip(this.buttonDeleteEpisode, "Delete episode...");
+            this.buttonDeleteEpisode.UseVisualStyleBackColor = true;
+            this.buttonDeleteEpisode.Click += new System.EventHandler(this.buttonDeleteEpisode_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "Json files|*.json|All files|*.*";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.DefaultExt = "json";
+            this.saveFileDialog.FileName = "mapdb.json";
+            this.saveFileDialog.Filter = "Json file|*.json|All files|*.*";
+            // 
+            // listBoxMaps
+            // 
+            this.listBoxMaps.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBoxMaps.FormattingEnabled = true;
+            this.listBoxMaps.ItemHeight = 15;
+            this.listBoxMaps.Location = new System.Drawing.Point(69, 56);
+            this.listBoxMaps.Name = "listBoxMaps";
+            this.listBoxMaps.Size = new System.Drawing.Size(399, 394);
+            this.listBoxMaps.TabIndex = 6;
+            this.listBoxMaps.SelectedIndexChanged += new System.EventHandler(this.listBoxMaps_SelectedIndexChanged);
+            this.listBoxMaps.DoubleClick += new System.EventHandler(this.listBoxMaps_DoubleClick);
+            this.listBoxMaps.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBoxMaps_KeyDown);
+            // 
+            // labelMaps
+            // 
+            this.labelMaps.AutoSize = true;
+            this.labelMaps.Location = new System.Drawing.Point(24, 59);
+            this.labelMaps.Name = "labelMaps";
+            this.labelMaps.Size = new System.Drawing.Size(39, 15);
+            this.labelMaps.TabIndex = 7;
+            this.labelMaps.Text = "Maps:";
+            // 
+            // buttonAddMap
+            // 
+            this.buttonAddMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAddMap.Image = global::QuakeMapDBEditor.Properties.Resources.Add_16x;
+            this.buttonAddMap.Location = new System.Drawing.Point(387, 458);
+            this.buttonAddMap.Name = "buttonAddMap";
+            this.buttonAddMap.Size = new System.Drawing.Size(23, 23);
+            this.buttonAddMap.TabIndex = 8;
+            this.toolTip.SetToolTip(this.buttonAddMap, "Add map...");
+            this.buttonAddMap.UseVisualStyleBackColor = true;
+            this.buttonAddMap.Click += new System.EventHandler(this.buttonAddMap_Click);
+            // 
+            // buttonEditMap
+            // 
+            this.buttonEditMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonEditMap.Image = global::QuakeMapDBEditor.Properties.Resources.Edit_16x;
+            this.buttonEditMap.Location = new System.Drawing.Point(416, 458);
+            this.buttonEditMap.Name = "buttonEditMap";
+            this.buttonEditMap.Size = new System.Drawing.Size(23, 23);
+            this.buttonEditMap.TabIndex = 9;
+            this.toolTip.SetToolTip(this.buttonEditMap, "Edit map...");
+            this.buttonEditMap.UseVisualStyleBackColor = true;
+            this.buttonEditMap.Click += new System.EventHandler(this.buttonEditMap_Click);
+            // 
+            // buttonDeleteMap
+            // 
+            this.buttonDeleteMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDeleteMap.Image = global::QuakeMapDBEditor.Properties.Resources.Trash_16x;
+            this.buttonDeleteMap.Location = new System.Drawing.Point(445, 458);
+            this.buttonDeleteMap.Name = "buttonDeleteMap";
+            this.buttonDeleteMap.Size = new System.Drawing.Size(23, 23);
+            this.buttonDeleteMap.TabIndex = 10;
+            this.toolTip.SetToolTip(this.buttonDeleteMap, "Delete map...");
+            this.buttonDeleteMap.UseVisualStyleBackColor = true;
+            this.buttonDeleteMap.Click += new System.EventHandler(this.buttonDeleteMap_Click);
+            // 
+            // FormMain
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(480, 491);
+            this.Controls.Add(this.buttonDeleteMap);
+            this.Controls.Add(this.buttonEditMap);
+            this.Controls.Add(this.buttonAddMap);
+            this.Controls.Add(this.labelMaps);
+            this.Controls.Add(this.listBoxMaps);
+            this.Controls.Add(this.buttonDeleteEpisode);
+            this.Controls.Add(this.buttonEditEpisode);
+            this.Controls.Add(this.buttonAddEpisode);
+            this.Controls.Add(this.comboBoxEpisodes);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
+            this.Name = "FormMain";
+            this.Text = "Quake MapDB Editor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
+            this.Load += new System.EventHandler(this.FormMain_Load);
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBoxEpisodes;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.Button buttonAddEpisode;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Button buttonEditEpisode;
+        private System.Windows.Forms.Button buttonDeleteEpisode;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.ListBox listBoxMaps;
+        private System.Windows.Forms.Label labelMaps;
+        private System.Windows.Forms.Button buttonAddMap;
+        private System.Windows.Forms.Button buttonEditMap;
+        private System.Windows.Forms.Button buttonDeleteMap;
+        private System.Windows.Forms.ToolTip toolTip;
+    }
+}
+
