@@ -45,23 +45,7 @@ namespace QuakeMapDBEditor
             InitializeComponent();
         }
 
-        private void UpdateTitle()
-        {
-            var sb = new StringBuilder();
-
-            sb.Append("Quake MapDB Editor");
-
-            if (_modified)
-                sb.Append("*");
-
-            if (_filename != null)
-                sb.Append($" - ({openFileDialog.FileName})");
-
-            
-
-            this.Text = sb.ToString();
-        }
-
+        
         private void comboBoxEpisodes_SelectedIndexChanged(object sender, EventArgs e)
         {
             buttonDeleteEpisode.Enabled = comboBoxEpisodes.SelectedIndex >= 0;
@@ -84,18 +68,7 @@ namespace QuakeMapDBEditor
         }
 
 
-        private void PopulateEpisodes()
-        {
-            var selectedIndex = comboBoxEpisodes.SelectedIndex;
-
-            comboBoxEpisodes.Items.Clear();
-            comboBoxEpisodes.Items.AddRange(_database.Episodes.ToArray());
-
-            comboBoxEpisodes.SelectedIndex = Math.Min(comboBoxEpisodes.Items.Count - 1, selectedIndex);
-
-            comboBoxEpisodes_SelectedIndexChanged(this, EventArgs.Empty);
-        }
-
+        
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (AskToSaveIfDirty())
@@ -127,24 +100,14 @@ namespace QuakeMapDBEditor
                 comboBoxEpisodes.SelectedIndex = 0;
         }
 
-        private void Commit()
-        {
-            _modified = false;
-            UpdateTitle();
-        }
-
-        private void MarkDirty()
-        {
-            _modified = true;
-            UpdateTitle();
-        }
+        
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(_filename))
                 saveAsToolStripMenuItem_Click(sender, EventArgs.Empty);
             else
-                SaveToFile(_filename);
+                SaveDatabaseToFile(_filename);
 
             Commit();
         }
@@ -154,18 +117,11 @@ namespace QuakeMapDBEditor
             if (saveFileDialog.ShowDialog() != DialogResult.OK)
                 return;
 
-            SaveToFile(saveFileDialog.FileName);
+            SaveDatabaseToFile(saveFileDialog.FileName);
             Commit();
         }
 
-        private void SaveToFile(string filename)
-        {
-            var json = JsonSerializer.Serialize(_database, _jsonSerializerOptions);
-
-            File.WriteAllText(filename, json);
-
-            _filename = filename;
-        }
+        
 
         private void buttonAddEpisode_Click(object sender, EventArgs e)
         {
@@ -212,26 +168,7 @@ namespace QuakeMapDBEditor
             buttonEditMap.Enabled = listBoxMaps.SelectedIndex >= 0;
         }
 
-        private void PopulateMaps()
-        {
-            if (SelectedEpisode == null)
-            {
-                listBoxMaps.Items.Clear();
-                return;
-            }
-
-            var ep = SelectedEpisode.Directory.ToLowerInvariant();
-            var maps = _database.Maps.Where(map => map.Episode.ToLowerInvariant() == ep);
-
-            var selectedIndex = listBoxMaps.SelectedIndex;
-
-            listBoxMaps.Items.Clear();
-            listBoxMaps.Items.AddRange(maps.ToArray());
-
-            listBoxMaps.SelectedIndex = Math.Min(listBoxMaps.Items.Count - 1, selectedIndex);
-
-            listBoxMaps_SelectedIndexChanged(this, EventArgs.Empty);
-        }
+        
 
         private void buttonAddMap_Click(object sender, EventArgs e)
         {
@@ -312,6 +249,101 @@ namespace QuakeMapDBEditor
 
             PopulateEpisodes();
 
+        }
+
+        
+
+        /// <summary>
+        /// Updates the form title
+        /// </summary>
+        private void UpdateTitle()
+        {
+            var sb = new StringBuilder();
+
+            sb.Append("Quake MapDB Editor");
+
+            // Add the modified star
+            if (_modified)
+                sb.Append("*");
+
+            // Append the currently opened filename
+            if (_filename != null)
+                sb.Append($" - ({openFileDialog.FileName})");
+
+            this.Text = sb.ToString();
+        }
+
+
+        /// <summary>
+        /// Populates the episodes combobox
+        /// </summary>
+        private void PopulateEpisodes()
+        {
+            var selectedIndex = comboBoxEpisodes.SelectedIndex;
+
+            comboBoxEpisodes.Items.Clear();
+            comboBoxEpisodes.Items.AddRange(_database.Episodes.ToArray());
+
+            comboBoxEpisodes.SelectedIndex = Math.Min(comboBoxEpisodes.Items.Count - 1, selectedIndex);
+
+            comboBoxEpisodes_SelectedIndexChanged(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// Populates the maps listbox with maps from the currently selected episode
+        /// </summary>
+        private void PopulateMaps()
+        {
+            if (SelectedEpisode == null)
+            {
+                listBoxMaps.Items.Clear();
+                return;
+            }
+
+            var ep = SelectedEpisode.Directory.ToLowerInvariant();
+            var maps = _database.Maps.Where(map => map.Episode.ToLowerInvariant() == ep);
+
+            var selectedIndex = listBoxMaps.SelectedIndex;
+
+            listBoxMaps.Items.Clear();
+            listBoxMaps.Items.AddRange(maps.ToArray());
+
+            // Re-select the current index or the one below in case the last item was deleted
+            listBoxMaps.SelectedIndex = Math.Min(listBoxMaps.Items.Count - 1, selectedIndex);
+
+            listBoxMaps_SelectedIndexChanged(this, EventArgs.Empty);
+        }
+
+
+        /// <summary>
+        /// Commits the current session so that it is no longer dirty
+        /// </summary>
+        private void Commit()
+        {
+            _modified = false;
+            UpdateTitle();
+        }
+
+        /// <summary>
+        /// Marks the current session dirty (aka: modified)
+        /// </summary>
+        private void MarkDirty()
+        {
+            _modified = true;
+            UpdateTitle();
+        }
+
+        /// <summary>
+        /// Saves current database to a file
+        /// </summary>
+        /// <param name="filename"></param>
+        private void SaveDatabaseToFile(string filename)
+        {
+            var json = JsonSerializer.Serialize(_database, _jsonSerializerOptions);
+
+            File.WriteAllText(filename, json);
+
+            _filename = filename;
         }
 
 
