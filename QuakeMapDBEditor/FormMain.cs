@@ -207,7 +207,9 @@ namespace QuakeMapDBEditor
             if (SelectedMap == null)
                 return;
 
-            buttonDeleteMap_Click(sender, e);
+            // Press 'delete' button if the key delete was pressed
+            if(e.KeyCode == Keys.Delete)
+                buttonDeleteMap_Click(sender, e);
         }
 
         private void buttonDeleteMap_Click(object sender, EventArgs e)
