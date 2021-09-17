@@ -98,7 +98,8 @@ namespace QuakeMapDBEditor
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AskToSaveIfDirty();
+            if (AskToSaveIfDirty())
+                return;
 
             if (openFileDialog.ShowDialog() != DialogResult.OK)
                 return;
@@ -121,7 +122,9 @@ namespace QuakeMapDBEditor
 
             PopulateEpisodes();
 
-            comboBoxEpisodes.SelectedIndex = 0;
+            // Select the first episode, if available
+            if (_database.Episodes.Count > 0)
+                comboBoxEpisodes.SelectedIndex = 0;
         }
 
         private void Commit()
@@ -275,8 +278,8 @@ namespace QuakeMapDBEditor
             if (MessageBox.Show($"Are you sure you want to delete the map '{SelectedMap}'?", "Delete map", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
                 return;
 
-            MarkDirty();
             _database.Maps.Remove(SelectedMap);
+            MarkDirty();
 
             PopulateMaps();
         }
@@ -288,18 +291,48 @@ namespace QuakeMapDBEditor
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            AskToSaveIfDirty();
+            if (AskToSaveIfDirty())
+            {
+                // User cancelled the closing
+                e.Cancel = true;
+            }
         }
 
-        private void AskToSaveIfDirty()
+        
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (AskToSaveIfDirty())
+                return;
+
+            _modified = false;
+            _database = new MapDatabase();
+            _filename = null;
+            UpdateTitle();
+
+            PopulateEpisodes();
+
+        }
+
+
+        /// <summary>
+        /// If the file has been modified, asks the user to save. Returns true if action was canceled.
+        /// </summary>
+        /// <returns></returns>
+        private bool AskToSaveIfDirty()
         {
             if (_modified)
             {
-                if (MessageBox.Show("There are unsaved changes. Do you want to save?", "Unsaved changes", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
-                    return;
+                var result = MessageBox.Show("There are unsaved changes. Do you want to save?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
 
-                saveToolStripMenuItem_Click(this, EventArgs.Empty);
+                if (result == DialogResult.Cancel)
+                    return true;
+
+                if(result == DialogResult.Yes)
+                    saveToolStripMenuItem_Click(this, EventArgs.Empty);
             }
+
+            return false;
         }
     }
 }
