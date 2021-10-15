@@ -510,13 +510,13 @@ namespace QuakeMapDBEditor
 
             bool update = false;
 
-            if (!string.IsNullOrEmpty(quakePath) && _modFolder != quakePath)
+            if (_modFolder != quakePath)
             {
                 update = true;
                 this._modFolder = quakePath;
             }
 
-            if (!string.IsNullOrEmpty(savedGamesPath) && _savedGamesFolder != savedGamesPath)
+            if (_savedGamesFolder != savedGamesPath)
             {
                 update = true;
                 this._savedGamesFolder = savedGamesPath;
@@ -529,13 +529,19 @@ namespace QuakeMapDBEditor
 
                 checkedListBoxMods.Items.Clear();
 
-                var dirInfo = new DirectoryInfo(quakePath);
-                if (dirInfo.Exists)
-                    mods.AddRange(dirInfo.GetDirectories().Select(d => d.Name));
+                if (!string.IsNullOrEmpty(_modFolder))
+                {
+                    var dirInfo = new DirectoryInfo(quakePath);
+                    if (dirInfo.Exists)
+                        mods.AddRange(dirInfo.GetDirectories().Select(d => d.Name));
+                }
 
-                dirInfo = new DirectoryInfo(savedGamesPath);
-                if (dirInfo.Exists)
-                    mods.AddRange(dirInfo.GetDirectories().Select(d => d.Name).Where(d => !mods.Contains(d)));
+                if (!string.IsNullOrEmpty(_savedGamesFolder))
+                {
+                    var dirInfo = new DirectoryInfo(savedGamesPath);
+                    if (dirInfo.Exists)
+                        mods.AddRange(dirInfo.GetDirectories().Select(d => d.Name).Where(d => !mods.Contains(d)));
+                }
 
                 checkedListBoxMods.Items.AddRange(mods.ToArray());
             }
