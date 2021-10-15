@@ -1,4 +1,5 @@
 ﻿using QuakeMapDBEditor.Models;
+using QuakePakSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,8 +17,9 @@ namespace QuakeMapDBEditor
 {
     public partial class FormMain : Form
     {
-        private static JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions()
+        public static JsonSerializerOptions JsonSerializerOptions = new JsonSerializerOptions()
         {
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             AllowTrailingCommas = true,
             PropertyNameCaseInsensitive = true,
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
@@ -77,11 +79,40 @@ namespace QuakeMapDBEditor
             if (openFileDialog.ShowDialog() != DialogResult.OK)
                 return;
 
-            var raw = File.ReadAllText(openFileDialog.FileName);
 
+            string raw;
+
+            switch(Path.GetExtension(openFileDialog.FileName).ToUpperInvariant())
+            {
+                // Load from pak file
+                case ".PAK":
+                    {
+                        using (var fs = new FileStream(openFileDialog.FileName, FileMode.Open))
+                        {
+                            var pak = PakFile.FromStream(fs);
+
+                            var entry = pak.FindEntryByName("mapdb.json");
+
+                            if (entry == null)
+                            {
+                                MessageBox.Show("Could not find 'mapdb.json' in the pak file.", "Failed to load", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+                            raw = Encoding.UTF8.GetString(entry.Data);
+                        }
+                        break;
+                    }
+                default:
+                    {
+                        raw = File.ReadAllText(openFileDialog.FileName);
+                        break;
+                    }
+            }
+            
             try
             {
-                var json = JsonSerializer.Deserialize<MapDatabase>(raw, _jsonSerializerOptions);
+                var json = JsonSerializer.Deserialize<MapDatabase>(raw, JsonSerializerOptions);
                 _database = json;
             }
             catch(JsonException ex)
@@ -341,9 +372,32 @@ namespace QuakeMapDBEditor
         /// <param name="filename"></param>
         private void SaveDatabaseToFile(string filename)
         {
-            var json = JsonSerializer.Serialize(_database, _jsonSerializerOptions);
+            var json = JsonSerializer.Serialize(_database, JsonSerializerOptions);
 
-            File.WriteAllText(filename, json);
+            switch(Path.GetExtension(filename).ToUpperInvariant())
+            {
+                // Save directly into mapdb.json inside a pak
+                case ".PAK":
+                    {
+                        PakFile pak;
+
+                        pak = File.Exists(filename) ? PakFile.FromFile(filename) : new PakFile();
+
+                        if(!pak.TryFindEntryByName("mapdb.json",out var entry))
+                            pak.Entries.Add(entry = new PakFile.Entry() { Name = "mapdb.json" });
+
+                        entry.Data = Encoding.UTF8.GetBytes(json);
+
+                        pak.Save(filename);
+
+                        break;
+                    }
+                default:
+                    {
+                        File.WriteAllText(filename, json);
+                        break;
+                    }
+            }
 
             _filename = filename;
         }
@@ -367,6 +421,27 @@ namespace QuakeMapDBEditor
             }
 
             return false;
+        }
+
+        private void autoGenerateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new FormAutoGenerate();
+            if (form.ShowDialog() != DialogResult.OK)
+                return;
+
+            var db = form.GeneratedDatabase;
+
+
+            Database.Episodes = db.Episodes;
+            Database.Maps = db.Maps;
+
+            MarkDirty();
+
+            PopulateEpisodes();
+
+            // Select the first episode, if available
+            if (_database.Episodes.Count > 0)
+                comboBoxEpisodes.SelectedIndex = 0;
         }
     }
 }

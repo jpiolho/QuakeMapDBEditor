@@ -9,6 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Gameloop.Vdf" Version="0.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="QuakePakSharp">
+      <HintPath>..\..\QuakePakSharp\QuakePakSharp\bin\Debug\net5.0\QuakePakSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

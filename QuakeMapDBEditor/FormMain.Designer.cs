@@ -40,6 +40,8 @@ namespace QuakeMapDBEditor
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoGenerateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonAddEpisode = new System.Windows.Forms.Button();
             this.buttonEditEpisode = new System.Windows.Forms.Button();
             this.buttonDeleteEpisode = new System.Windows.Forms.Button();
@@ -78,7 +80,8 @@ namespace QuakeMapDBEditor
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.toolsToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(480, 24);
@@ -138,6 +141,21 @@ namespace QuakeMapDBEditor
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.autoGenerateToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.toolsToolStripMenuItem.Text = "&Tools";
+            // 
+            // autoGenerateToolStripMenuItem
+            // 
+            this.autoGenerateToolStripMenuItem.Name = "autoGenerateToolStripMenuItem";
+            this.autoGenerateToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.autoGenerateToolStripMenuItem.Text = "Auto generate...";
+            this.autoGenerateToolStripMenuItem.Click += new System.EventHandler(this.autoGenerateToolStripMenuItem_Click);
+            // 
             // buttonAddEpisode
             // 
             this.buttonAddEpisode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -176,13 +194,13 @@ namespace QuakeMapDBEditor
             // 
             // openFileDialog
             // 
-            this.openFileDialog.Filter = "Json files|*.json|All files|*.*";
+            this.openFileDialog.Filter = "Json files|*.json|Pak files|*.pak|All files|*.*";
             // 
             // saveFileDialog
             // 
             this.saveFileDialog.DefaultExt = "json";
             this.saveFileDialog.FileName = "mapdb.json";
-            this.saveFileDialog.Filter = "Json file|*.json|All files|*.*";
+            this.saveFileDialog.Filter = "Json file|*.json|Pak file|*.pak|All files|*.*";
             // 
             // listBoxMaps
             // 
@@ -295,6 +313,8 @@ namespace QuakeMapDBEditor
         private System.Windows.Forms.Button buttonEditMap;
         private System.Windows.Forms.Button buttonDeleteMap;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem autoGenerateToolStripMenuItem;
     }
 }
 
