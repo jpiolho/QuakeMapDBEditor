@@ -45,6 +45,8 @@ namespace QuakeMapDBEditor
             this.buttonChooseFolderSavedGames = new System.Windows.Forms.Button();
             this.folderBrowserDialogSavedGames = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBoxOptions = new System.Windows.Forms.GroupBox();
+            this.checkBoxSortMapsAlphabetically = new System.Windows.Forms.CheckBox();
+            this.groupBoxOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -118,7 +120,7 @@ namespace QuakeMapDBEditor
             this.checkedListBoxMods.FormattingEnabled = true;
             this.checkedListBoxMods.Location = new System.Drawing.Point(12, 92);
             this.checkedListBoxMods.Name = "checkedListBoxMods";
-            this.checkedListBoxMods.Size = new System.Drawing.Size(506, 238);
+            this.checkedListBoxMods.Size = new System.Drawing.Size(506, 256);
             this.checkedListBoxMods.TabIndex = 18;
             this.checkedListBoxMods.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxMods_ItemCheck);
             // 
@@ -134,7 +136,7 @@ namespace QuakeMapDBEditor
             // buttonSelectAll
             // 
             this.buttonSelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSelectAll.Location = new System.Drawing.Point(12, 336);
+            this.buttonSelectAll.Location = new System.Drawing.Point(12, 355);
             this.buttonSelectAll.Name = "buttonSelectAll";
             this.buttonSelectAll.Size = new System.Drawing.Size(95, 23);
             this.buttonSelectAll.TabIndex = 20;
@@ -145,7 +147,7 @@ namespace QuakeMapDBEditor
             // buttonDeselectAll
             // 
             this.buttonDeselectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonDeselectAll.Location = new System.Drawing.Point(113, 336);
+            this.buttonDeselectAll.Location = new System.Drawing.Point(113, 355);
             this.buttonDeselectAll.Name = "buttonDeselectAll";
             this.buttonDeselectAll.Size = new System.Drawing.Size(94, 23);
             this.buttonDeselectAll.TabIndex = 21;
@@ -186,12 +188,25 @@ namespace QuakeMapDBEditor
             // 
             // groupBoxOptions
             // 
-            this.groupBoxOptions.Location = new System.Drawing.Point(12, 365);
+            this.groupBoxOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxOptions.Controls.Add(this.checkBoxSortMapsAlphabetically);
+            this.groupBoxOptions.Location = new System.Drawing.Point(12, 384);
             this.groupBoxOptions.Name = "groupBoxOptions";
-            this.groupBoxOptions.Size = new System.Drawing.Size(506, 69);
+            this.groupBoxOptions.Size = new System.Drawing.Size(506, 50);
             this.groupBoxOptions.TabIndex = 25;
             this.groupBoxOptions.TabStop = false;
             this.groupBoxOptions.Text = "Options";
+            // 
+            // checkBoxSortMapsAlphabetically
+            // 
+            this.checkBoxSortMapsAlphabetically.AutoSize = true;
+            this.checkBoxSortMapsAlphabetically.Location = new System.Drawing.Point(6, 22);
+            this.checkBoxSortMapsAlphabetically.Name = "checkBoxSortMapsAlphabetically";
+            this.checkBoxSortMapsAlphabetically.Size = new System.Drawing.Size(155, 19);
+            this.checkBoxSortMapsAlphabetically.TabIndex = 0;
+            this.checkBoxSortMapsAlphabetically.Text = "Sort maps alphabetically";
+            this.checkBoxSortMapsAlphabetically.UseVisualStyleBackColor = true;
             // 
             // FormAutoGenerate
             // 
@@ -219,6 +234,8 @@ namespace QuakeMapDBEditor
             this.Text = "Auto Generate";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAutoGenerate_FormClosing);
             this.Load += new System.EventHandler(this.FormAutoGenerate_Load);
+            this.groupBoxOptions.ResumeLayout(false);
+            this.groupBoxOptions.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,5 +259,6 @@ namespace QuakeMapDBEditor
         private System.Windows.Forms.Button buttonChooseFolderSavedGames;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSavedGames;
         private System.Windows.Forms.GroupBox groupBoxOptions;
+        private System.Windows.Forms.CheckBox checkBoxSortMapsAlphabetically;
     }
 }

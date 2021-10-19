@@ -224,6 +224,10 @@ namespace QuakeMapDBEditor
                         db.Maps.Add(map);
                     }
 
+                    // Sort the maps
+                    if(checkBoxSortMapsAlphabetically.Checked)
+                        db.Maps = db.Maps.OrderBy(m => m.BSP).ToList();
+
                     progressBar.Value = i + 1;
                 }
 
@@ -591,6 +595,8 @@ namespace QuakeMapDBEditor
             buttonChooseFolder.Enabled = !_generating;
             buttonChooseFolderSavedGames.Enabled = !_generating;
             textBoxQuakeFolder.ReadOnly = _generating;
+
+            checkBoxSortMapsAlphabetically.Enabled = !_generating;
         }
 
         private void textBoxSavedGamesFolder_KeyDown(object sender, KeyEventArgs e)
