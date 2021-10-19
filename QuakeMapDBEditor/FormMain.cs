@@ -488,5 +488,10 @@ namespace QuakeMapDBEditor
 
             listBoxMaps_SelectedIndexChanged(this, EventArgs.Empty);
         }
+
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new FormAbout().ShowDialog();
+        }
     }
 }

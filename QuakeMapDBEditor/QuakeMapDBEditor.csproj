@@ -6,6 +6,7 @@
     <RootNamespace>QuakeMapDBEditor</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>QuakeMapDBEditor</AssemblyName>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
