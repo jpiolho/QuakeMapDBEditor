@@ -27,7 +27,7 @@ namespace QuakeMapDBEditor
         private void FormAbout_Load(object sender, EventArgs e)
         {
             var version = Assembly.GetEntryAssembly().GetName().Version;
-            labelVersion.Text = $"v{version.Major}.{version.Minor}.{version.Revision}";
+            labelVersion.Text = $"v{version.Major}.{version.Minor}.{version.Build}";
         }
 
         private void linkLabelGithub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
