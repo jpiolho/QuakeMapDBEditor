@@ -355,7 +355,7 @@ namespace QuakeMapDBEditor
             // Re-select the current index or the one below in case the last item was deleted
             listBoxMaps.SelectedIndex = Math.Min(listBoxMaps.Items.Count - 1, selectedIndex);
 
-            listBoxMaps_SelectedIndexChanged(this, EventArgs.Empty);
+            UpdateState();
         }
 
 
@@ -463,13 +463,19 @@ namespace QuakeMapDBEditor
             if (idx <= 0)
                 return;
 
-            var temp = listBoxMaps.Items[idx - 1];
-            listBoxMaps.Items[idx - 1] = listBoxMaps.Items[idx];
-            listBoxMaps.Items[idx] = temp;
+            var mapAbove = (Map)listBoxMaps.Items[idx - 1];
+            var aboveDatabaseIndex = _database.Maps.IndexOf(mapAbove);
+            var currentDatabaseIndex = _database.Maps.IndexOf((Map)listBoxMaps.Items[idx]);
+
+            if (aboveDatabaseIndex == -1 || currentDatabaseIndex == -1)
+                return;
+
+            // Swap the maps
+            _database.Maps[aboveDatabaseIndex] = _database.Maps[currentDatabaseIndex];
+            _database.Maps[currentDatabaseIndex] = mapAbove;
 
             listBoxMaps.SelectedIndex--;
-
-            listBoxMaps_SelectedIndexChanged(this, EventArgs.Empty);
+            PopulateMaps();
         }
 
         private void buttonMapMoveDown_Click(object sender, EventArgs e)
@@ -480,13 +486,19 @@ namespace QuakeMapDBEditor
             if (idx < 0 || idx >= listBoxMaps.Items.Count-1)
                 return;
 
-            var temp = listBoxMaps.Items[idx + 1];
-            listBoxMaps.Items[idx + 1] = listBoxMaps.Items[idx];
-            listBoxMaps.Items[idx] = temp;
+            var mapBelow = (Map)listBoxMaps.Items[idx + 1];
+            var belowDatabaseIndex = _database.Maps.IndexOf(mapBelow);
+            var currentDatabaseIndex = _database.Maps.IndexOf((Map)listBoxMaps.Items[idx]);
+
+            if (belowDatabaseIndex == -1 || currentDatabaseIndex == -1)
+                return;
+
+            // Swap the maps
+            _database.Maps[belowDatabaseIndex] = _database.Maps[currentDatabaseIndex];
+            _database.Maps[currentDatabaseIndex] = mapBelow;
 
             listBoxMaps.SelectedIndex++;
-
-            listBoxMaps_SelectedIndexChanged(this, EventArgs.Empty);
+            PopulateMaps();
         }
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)

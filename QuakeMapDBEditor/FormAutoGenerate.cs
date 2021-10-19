@@ -215,6 +215,10 @@ namespace QuakeMapDBEditor
                     episode.Name = await GetModNameAsync(mod,folders);
                     db.Episodes.Add(episode);
 
+                    // Sort the maps
+                    if (checkBoxSortMapsAlphabetically.Checked)
+                        maps = maps.OrderBy(m => m.BSP).ToList();
+
                     // Add the maps
                     foreach (var map in maps)
                     {
@@ -224,10 +228,7 @@ namespace QuakeMapDBEditor
                         db.Maps.Add(map);
                     }
 
-                    // Sort the maps
-                    if(checkBoxSortMapsAlphabetically.Checked)
-                        db.Maps = db.Maps.OrderBy(m => m.BSP).ToList();
-
+                    
                     progressBar.Value = i + 1;
                 }
 
