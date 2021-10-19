@@ -47,12 +47,23 @@ namespace QuakeMapDBEditor
             InitializeComponent();
         }
 
-        
+        private void UpdateState()
+        {
+            buttonEditEpisode.Enabled = comboBoxEpisodes.SelectedIndex >= 0;
+            buttonDeleteEpisode.Enabled = comboBoxEpisodes.SelectedIndex >= 0;
+
+            buttonAddMap.Enabled = comboBoxEpisodes.SelectedIndex >= 0;
+            buttonDeleteMap.Enabled = listBoxMaps.SelectedIndex >= 0;
+            buttonEditMap.Enabled = listBoxMaps.SelectedIndex >= 0;
+
+            buttonMapMoveUp.Enabled = listBoxMaps.SelectedIndex > 0;
+            buttonMapMoveDown.Enabled = listBoxMaps.SelectedIndex >= 0 && listBoxMaps.SelectedIndex < listBoxMaps.Items.Count - 1;
+        }
+
+
         private void comboBoxEpisodes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            buttonDeleteEpisode.Enabled = comboBoxEpisodes.SelectedIndex >= 0;
-            buttonEditEpisode.Enabled = comboBoxEpisodes.SelectedIndex >= 0;
-            buttonAddMap.Enabled = comboBoxEpisodes.SelectedIndex >= 0;
+            UpdateState();
 
             PopulateMaps();
 
@@ -70,7 +81,7 @@ namespace QuakeMapDBEditor
         }
 
 
-        
+
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (AskToSaveIfDirty())
@@ -82,7 +93,7 @@ namespace QuakeMapDBEditor
 
             string raw;
 
-            switch(Path.GetExtension(openFileDialog.FileName).ToUpperInvariant())
+            switch (Path.GetExtension(openFileDialog.FileName).ToUpperInvariant())
             {
                 // Load from pak file
                 case ".PAK":
@@ -109,15 +120,15 @@ namespace QuakeMapDBEditor
                         break;
                     }
             }
-            
+
             try
             {
                 var json = JsonSerializer.Deserialize<MapDatabase>(raw, JsonSerializerOptions);
                 _database = json;
             }
-            catch(JsonException ex)
+            catch (JsonException ex)
             {
-                MessageBox.Show($"Failed to load file. Exception: {ex.Message}","Failed to load",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show($"Failed to load file. Exception: {ex.Message}", "Failed to load", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -131,7 +142,7 @@ namespace QuakeMapDBEditor
                 comboBoxEpisodes.SelectedIndex = 0;
         }
 
-        
+
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -152,7 +163,7 @@ namespace QuakeMapDBEditor
             Commit();
         }
 
-        
+
 
         private void buttonAddEpisode_Click(object sender, EventArgs e)
         {
@@ -195,15 +206,15 @@ namespace QuakeMapDBEditor
 
         private void listBoxMaps_SelectedIndexChanged(object sender, EventArgs e)
         {
-            buttonDeleteMap.Enabled = listBoxMaps.SelectedIndex >= 0;
-            buttonEditMap.Enabled = listBoxMaps.SelectedIndex >= 0;
+            UpdateState();
+
         }
 
-        
+
 
         private void buttonAddMap_Click(object sender, EventArgs e)
         {
-            var form = new FormMap(_database,new Map(),SelectedEpisode);
+            var form = new FormMap(_database, new Map(), SelectedEpisode);
 
             if (form.ShowDialog() != DialogResult.OK)
                 return;
@@ -239,7 +250,7 @@ namespace QuakeMapDBEditor
                 return;
 
             // Press 'delete' button if the key delete was pressed
-            if(e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Delete)
                 buttonDeleteMap_Click(sender, e);
         }
 
@@ -268,7 +279,7 @@ namespace QuakeMapDBEditor
             }
         }
 
-        
+
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -284,7 +295,7 @@ namespace QuakeMapDBEditor
 
         }
 
-        
+
 
         /// <summary>
         /// Updates the form title
@@ -374,7 +385,7 @@ namespace QuakeMapDBEditor
         {
             var json = JsonSerializer.Serialize(_database, JsonSerializerOptions);
 
-            switch(Path.GetExtension(filename).ToUpperInvariant())
+            switch (Path.GetExtension(filename).ToUpperInvariant())
             {
                 // Save directly into mapdb.json inside a pak
                 case ".PAK":
@@ -383,7 +394,7 @@ namespace QuakeMapDBEditor
 
                         pak = File.Exists(filename) ? PakFile.FromFile(filename) : new PakFile();
 
-                        if(!pak.TryFindEntryByName("mapdb.json",out var entry))
+                        if (!pak.TryFindEntryByName("mapdb.json", out var entry))
                             pak.Entries.Add(entry = new PakFile.Entry() { Name = "mapdb.json" });
 
                         entry.Data = Encoding.UTF8.GetBytes(json);
@@ -416,7 +427,7 @@ namespace QuakeMapDBEditor
                 if (result == DialogResult.Cancel)
                     return true;
 
-                if(result == DialogResult.Yes)
+                if (result == DialogResult.Yes)
                     saveToolStripMenuItem_Click(this, EventArgs.Empty);
             }
 
@@ -442,6 +453,40 @@ namespace QuakeMapDBEditor
             // Select the first episode, if available
             if (_database.Episodes.Count > 0)
                 comboBoxEpisodes.SelectedIndex = 0;
+        }
+
+        private void buttonMapMoveUp_Click(object sender, EventArgs e)
+        {
+            var idx = listBoxMaps.SelectedIndex;
+
+            // Validate that it's a correct item
+            if (idx <= 0)
+                return;
+
+            var temp = listBoxMaps.Items[idx - 1];
+            listBoxMaps.Items[idx - 1] = listBoxMaps.Items[idx];
+            listBoxMaps.Items[idx] = temp;
+
+            listBoxMaps.SelectedIndex--;
+
+            listBoxMaps_SelectedIndexChanged(this, EventArgs.Empty);
+        }
+
+        private void buttonMapMoveDown_Click(object sender, EventArgs e)
+        {
+            var idx = listBoxMaps.SelectedIndex;
+
+            // Validate that it's a correct item
+            if (idx < 0 || idx >= listBoxMaps.Items.Count-1)
+                return;
+
+            var temp = listBoxMaps.Items[idx + 1];
+            listBoxMaps.Items[idx + 1] = listBoxMaps.Items[idx];
+            listBoxMaps.Items[idx] = temp;
+
+            listBoxMaps.SelectedIndex++;
+
+            listBoxMaps_SelectedIndexChanged(this, EventArgs.Empty);
         }
     }
 }

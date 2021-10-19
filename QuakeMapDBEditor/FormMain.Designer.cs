@@ -53,6 +53,9 @@ namespace QuakeMapDBEditor
             this.buttonEditMap = new System.Windows.Forms.Button();
             this.buttonDeleteMap = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonMapMoveDown = new System.Windows.Forms.Button();
+            this.buttonMapMoveUp = new System.Windows.Forms.Button();
+            this.separator = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,40 +107,40 @@ namespace QuakeMapDBEditor
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(120, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -230,7 +233,7 @@ namespace QuakeMapDBEditor
             // 
             this.buttonAddMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddMap.Image = global::QuakeMapDBEditor.Properties.Resources.Add_16x;
-            this.buttonAddMap.Location = new System.Drawing.Point(387, 458);
+            this.buttonAddMap.Location = new System.Drawing.Point(321, 456);
             this.buttonAddMap.Name = "buttonAddMap";
             this.buttonAddMap.Size = new System.Drawing.Size(23, 23);
             this.buttonAddMap.TabIndex = 8;
@@ -242,7 +245,7 @@ namespace QuakeMapDBEditor
             // 
             this.buttonEditMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonEditMap.Image = global::QuakeMapDBEditor.Properties.Resources.Edit_16x;
-            this.buttonEditMap.Location = new System.Drawing.Point(416, 458);
+            this.buttonEditMap.Location = new System.Drawing.Point(350, 456);
             this.buttonEditMap.Name = "buttonEditMap";
             this.buttonEditMap.Size = new System.Drawing.Size(23, 23);
             this.buttonEditMap.TabIndex = 9;
@@ -254,7 +257,7 @@ namespace QuakeMapDBEditor
             // 
             this.buttonDeleteMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonDeleteMap.Image = global::QuakeMapDBEditor.Properties.Resources.Trash_16x;
-            this.buttonDeleteMap.Location = new System.Drawing.Point(445, 458);
+            this.buttonDeleteMap.Location = new System.Drawing.Point(379, 456);
             this.buttonDeleteMap.Name = "buttonDeleteMap";
             this.buttonDeleteMap.Size = new System.Drawing.Size(23, 23);
             this.buttonDeleteMap.TabIndex = 10;
@@ -262,11 +265,47 @@ namespace QuakeMapDBEditor
             this.buttonDeleteMap.UseVisualStyleBackColor = true;
             this.buttonDeleteMap.Click += new System.EventHandler(this.buttonDeleteMap_Click);
             // 
+            // buttonMapMoveDown
+            // 
+            this.buttonMapMoveDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonMapMoveDown.Image = global::QuakeMapDBEditor.Properties.Resources.Download_16x;
+            this.buttonMapMoveDown.Location = new System.Drawing.Point(445, 456);
+            this.buttonMapMoveDown.Name = "buttonMapMoveDown";
+            this.buttonMapMoveDown.Size = new System.Drawing.Size(23, 23);
+            this.buttonMapMoveDown.TabIndex = 11;
+            this.toolTip.SetToolTip(this.buttonMapMoveDown, "Add map...");
+            this.buttonMapMoveDown.UseVisualStyleBackColor = true;
+            this.buttonMapMoveDown.Click += new System.EventHandler(this.buttonMapMoveDown_Click);
+            // 
+            // buttonMapMoveUp
+            // 
+            this.buttonMapMoveUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonMapMoveUp.Image = global::QuakeMapDBEditor.Properties.Resources.Upload_16x;
+            this.buttonMapMoveUp.Location = new System.Drawing.Point(416, 456);
+            this.buttonMapMoveUp.Name = "buttonMapMoveUp";
+            this.buttonMapMoveUp.Size = new System.Drawing.Size(23, 23);
+            this.buttonMapMoveUp.TabIndex = 12;
+            this.toolTip.SetToolTip(this.buttonMapMoveUp, "Add map...");
+            this.buttonMapMoveUp.UseVisualStyleBackColor = true;
+            this.buttonMapMoveUp.Click += new System.EventHandler(this.buttonMapMoveUp_Click);
+            // 
+            // separator
+            // 
+            this.separator.AutoSize = true;
+            this.separator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.separator.Location = new System.Drawing.Point(408, 460);
+            this.separator.Name = "separator";
+            this.separator.Size = new System.Drawing.Size(2, 17);
+            this.separator.TabIndex = 13;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(480, 491);
+            this.Controls.Add(this.separator);
+            this.Controls.Add(this.buttonMapMoveUp);
+            this.Controls.Add(this.buttonMapMoveDown);
             this.Controls.Add(this.buttonDeleteMap);
             this.Controls.Add(this.buttonEditMap);
             this.Controls.Add(this.buttonAddMap);
@@ -315,6 +354,9 @@ namespace QuakeMapDBEditor
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autoGenerateToolStripMenuItem;
+        private System.Windows.Forms.Button buttonMapMoveDown;
+        private System.Windows.Forms.Button buttonMapMoveUp;
+        private System.Windows.Forms.Label separator;
     }
 }
 

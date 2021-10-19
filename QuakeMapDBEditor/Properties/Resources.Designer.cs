@@ -73,6 +73,16 @@ namespace QuakeMapDBEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Download_16x {
+            get {
+                object obj = ResourceManager.GetObject("Download_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Edit_16x {
             get {
                 object obj = ResourceManager.GetObject("Edit_16x", resourceCulture);
@@ -86,6 +96,16 @@ namespace QuakeMapDBEditor.Properties {
         internal static System.Drawing.Bitmap Trash_16x {
             get {
                 object obj = ResourceManager.GetObject("Trash_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Upload_16x {
+            get {
+                object obj = ResourceManager.GetObject("Upload_16x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
