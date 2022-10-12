@@ -58,7 +58,6 @@ namespace QuakeMapDBEditor
             this.buttonMapMoveDown = new System.Windows.Forms.Button();
             this.buttonMapMoveUp = new System.Windows.Forms.Button();
             this.separator = new System.Windows.Forms.Label();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,8 +89,7 @@ namespace QuakeMapDBEditor
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.toolsToolStripMenuItem,
-            this.aboutToolStripMenuItem,
-            this.toolStripMenuItem2});
+            this.aboutToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
@@ -337,11 +335,6 @@ namespace QuakeMapDBEditor
             this.separator.Size = new System.Drawing.Size(2, 22);
             this.separator.TabIndex = 13;
             // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 24);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -404,7 +397,6 @@ namespace QuakeMapDBEditor
         private System.Windows.Forms.Label separator;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }
 

@@ -57,7 +57,7 @@ namespace QuakeMapDBEditor
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 21);
+            this.label1.Location = new System.Drawing.Point(60, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 20);
             this.label1.TabIndex = 0;
@@ -67,10 +67,10 @@ namespace QuakeMapDBEditor
             // 
             this.textBoxQuakeFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxQuakeFolder.Location = new System.Drawing.Point(150, 16);
+            this.textBoxQuakeFolder.Location = new System.Drawing.Point(164, 16);
             this.textBoxQuakeFolder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxQuakeFolder.Name = "textBoxQuakeFolder";
-            this.textBoxQuakeFolder.Size = new System.Drawing.Size(405, 27);
+            this.textBoxQuakeFolder.Size = new System.Drawing.Size(391, 27);
             this.textBoxQuakeFolder.TabIndex = 1;
             this.textBoxQuakeFolder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxQuakeFolder_KeyDown);
             this.textBoxQuakeFolder.Leave += new System.EventHandler(this.textBoxQuakeFolder_Leave);
@@ -170,7 +170,7 @@ namespace QuakeMapDBEditor
             // labelSavedGames
             // 
             this.labelSavedGames.AutoSize = true;
-            this.labelSavedGames.Location = new System.Drawing.Point(14, 59);
+            this.labelSavedGames.Location = new System.Drawing.Point(14, 58);
             this.labelSavedGames.Name = "labelSavedGames";
             this.labelSavedGames.Size = new System.Drawing.Size(144, 20);
             this.labelSavedGames.TabIndex = 22;
@@ -180,10 +180,10 @@ namespace QuakeMapDBEditor
             // 
             this.textBoxSavedGamesFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSavedGamesFolder.Location = new System.Drawing.Point(150, 55);
+            this.textBoxSavedGamesFolder.Location = new System.Drawing.Point(164, 55);
             this.textBoxSavedGamesFolder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxSavedGamesFolder.Name = "textBoxSavedGamesFolder";
-            this.textBoxSavedGamesFolder.Size = new System.Drawing.Size(405, 27);
+            this.textBoxSavedGamesFolder.Size = new System.Drawing.Size(391, 27);
             this.textBoxSavedGamesFolder.TabIndex = 23;
             this.textBoxSavedGamesFolder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSavedGamesFolder_KeyDown);
             this.textBoxSavedGamesFolder.Leave += new System.EventHandler(this.textBoxSavedGamesFolder_Leave);
