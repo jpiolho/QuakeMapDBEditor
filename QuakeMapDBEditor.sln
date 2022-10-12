@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31613.86
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuakeMapDBEditor", "QuakeMapDBEditor\QuakeMapDBEditor.csproj", "{814CB231-C9B2-4BC4-87C5-B591DDDCAACF}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "QuakeMapDBEditor.Setup", "QuakeMapDBEditor.Setup\QuakeMapDBEditor.Setup.vdproj", "{C3066568-7D4E-4B5A-90E0-0DE9704C2E29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,8 @@ Global
 		{814CB231-C9B2-4BC4-87C5-B591DDDCAACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{814CB231-C9B2-4BC4-87C5-B591DDDCAACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{814CB231-C9B2-4BC4-87C5-B591DDDCAACF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3066568-7D4E-4B5A-90E0-0DE9704C2E29}.Debug|Any CPU.ActiveCfg = Debug
+		{C3066568-7D4E-4B5A-90E0-0DE9704C2E29}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
