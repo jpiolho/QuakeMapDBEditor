@@ -17,6 +17,7 @@ namespace QuakeMapDBEditor
         public FormAbout()
         {
             InitializeComponent();
+            this.SetDefaultIcon();
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

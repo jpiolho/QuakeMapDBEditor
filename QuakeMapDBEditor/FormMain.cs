@@ -44,6 +44,7 @@ namespace QuakeMapDBEditor
         public FormMain()
         {
             InitializeComponent();
+            this.SetDefaultIcon();
         }
 
         private void UpdateState()

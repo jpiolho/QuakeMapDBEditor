@@ -45,10 +45,10 @@ namespace QuakeMapDBEditor
             this.buttonChooseFolderSavedGames = new System.Windows.Forms.Button();
             this.folderBrowserDialogSavedGames = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBoxOptions = new System.Windows.Forms.GroupBox();
+            this.checkBoxRemoveDuplicates = new System.Windows.Forms.CheckBox();
             this.checkBoxIgnorePakFiles = new System.Windows.Forms.CheckBox();
             this.checkBoxIgnoreLooseMaps = new System.Windows.Forms.CheckBox();
             this.checkBoxSortMapsAlphabetically = new System.Windows.Forms.CheckBox();
-            this.checkBoxRemoveDuplicates = new System.Windows.Forms.CheckBox();
             this.groupBoxOptions.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -215,6 +215,17 @@ namespace QuakeMapDBEditor
             this.groupBoxOptions.TabStop = false;
             this.groupBoxOptions.Text = "Options";
             // 
+            // checkBoxRemoveDuplicates
+            // 
+            this.checkBoxRemoveDuplicates.AutoSize = true;
+            this.checkBoxRemoveDuplicates.Location = new System.Drawing.Point(7, 61);
+            this.checkBoxRemoveDuplicates.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBoxRemoveDuplicates.Name = "checkBoxRemoveDuplicates";
+            this.checkBoxRemoveDuplicates.Size = new System.Drawing.Size(157, 24);
+            this.checkBoxRemoveDuplicates.TabIndex = 3;
+            this.checkBoxRemoveDuplicates.Text = "Remove duplicates";
+            this.checkBoxRemoveDuplicates.UseVisualStyleBackColor = true;
+            // 
             // checkBoxIgnorePakFiles
             // 
             this.checkBoxIgnorePakFiles.AutoSize = true;
@@ -247,17 +258,6 @@ namespace QuakeMapDBEditor
             this.checkBoxSortMapsAlphabetically.TabIndex = 0;
             this.checkBoxSortMapsAlphabetically.Text = "Sort maps alphabetically";
             this.checkBoxSortMapsAlphabetically.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxRemoveDuplicates
-            // 
-            this.checkBoxRemoveDuplicates.AutoSize = true;
-            this.checkBoxRemoveDuplicates.Location = new System.Drawing.Point(7, 61);
-            this.checkBoxRemoveDuplicates.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.checkBoxRemoveDuplicates.Name = "checkBoxRemoveDuplicates";
-            this.checkBoxRemoveDuplicates.Size = new System.Drawing.Size(157, 24);
-            this.checkBoxRemoveDuplicates.TabIndex = 3;
-            this.checkBoxRemoveDuplicates.Text = "Remove duplicates";
-            this.checkBoxRemoveDuplicates.UseVisualStyleBackColor = true;
             // 
             // FormAutoGenerate
             // 

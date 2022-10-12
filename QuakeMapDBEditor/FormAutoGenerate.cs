@@ -98,6 +98,8 @@ namespace QuakeMapDBEditor
         public FormAutoGenerate()
         {
             InitializeComponent();
+            this.SetDefaultIcon();
+
             this.DialogResult = DialogResult.Cancel;
         }
 

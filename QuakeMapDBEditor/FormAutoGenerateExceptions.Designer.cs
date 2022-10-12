@@ -39,27 +39,29 @@ namespace QuakeMapDBEditor
             this.textBoxExceptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxExceptions.Location = new System.Drawing.Point(12, 27);
+            this.textBoxExceptions.Location = new System.Drawing.Point(14, 36);
+            this.textBoxExceptions.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxExceptions.Multiline = true;
             this.textBoxExceptions.Name = "textBoxExceptions";
-            this.textBoxExceptions.Size = new System.Drawing.Size(644, 328);
+            this.textBoxExceptions.Size = new System.Drawing.Size(735, 436);
             this.textBoxExceptions.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(14, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(328, 15);
+            this.label1.Size = new System.Drawing.Size(416, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Auto Generate failed to generate info for the following maps:";
             // 
             // buttonOk
             // 
             this.buttonOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonOk.Location = new System.Drawing.Point(581, 361);
+            this.buttonOk.Location = new System.Drawing.Point(664, 481);
+            this.buttonOk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(75, 23);
+            this.buttonOk.Size = new System.Drawing.Size(86, 31);
             this.buttonOk.TabIndex = 2;
             this.buttonOk.Text = "Ok";
             this.buttonOk.UseVisualStyleBackColor = true;
@@ -67,12 +69,13 @@ namespace QuakeMapDBEditor
             // 
             // FormAutoGenerateExceptions
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(668, 390);
+            this.ClientSize = new System.Drawing.Size(763, 520);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxExceptions);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormAutoGenerateExceptions";
