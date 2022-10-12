@@ -14,6 +14,8 @@ namespace QuakeMapDBEditor.Models
         public string Directory { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool NeedsSkillSelect { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public string Map { get; set; } = null;
 
         public override string ToString() => $"{Name} ({Directory})";
     }

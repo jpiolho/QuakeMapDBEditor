@@ -33,6 +33,7 @@ namespace QuakeMapDBEditor
             Episode.Name = textboxName.Text;
             Episode.Directory = textBoxDirectory.Text;
             Episode.NeedsSkillSelect = checkBoxNeedSkillSelect.Checked;
+            Episode.Map = checkBoxOverrideStartingMap.Checked ? textBoxOverrideStartingMap.Text : null;
 
             DialogResult = DialogResult.OK;
             this.Close();
@@ -43,6 +44,10 @@ namespace QuakeMapDBEditor
             textboxName.Text = Episode.Name;
             textBoxDirectory.Text = Episode.Directory;
             checkBoxNeedSkillSelect.Checked = Episode.NeedsSkillSelect;
+            checkBoxOverrideStartingMap.Checked = Episode.Map != null;
+            textBoxOverrideStartingMap.Text = Episode.Map;
+
+            UpdateState();
         }
 
         private void buttonChooseFolder_Click(object sender, EventArgs e)
@@ -51,6 +56,27 @@ namespace QuakeMapDBEditor
                 return;
 
             textBoxDirectory.Text = Path.GetFileName(folderBrowserDialog.SelectedPath);
+        }
+
+
+        private void UpdateState()
+        {
+            if(checkBoxOverrideStartingMap.Checked)
+            {
+                checkBoxNeedSkillSelect.Enabled = false;
+                checkBoxNeedSkillSelect.Checked = false;
+                textBoxOverrideStartingMap.Enabled = true;
+            }
+            else
+            {
+                checkBoxNeedSkillSelect.Enabled = true;
+                textBoxOverrideStartingMap.Enabled = false;
+            }
+        }
+
+        private void checkBoxOverrideStartingMap_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateState();
         }
     }
 }
