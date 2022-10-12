@@ -44,6 +44,8 @@ namespace QuakeMapDBEditor
             checkBoxCooperative.Checked = Map.Cooperative;
             checkBoxDeathmatch.Checked = Map.Deathmatch;
             checkBoxSingleplayer.Checked = Map.Singleplayer;
+            checkBoxCTF.Checked = Map.CTF;
+            checkBoxHorde.Checked = Map.Horde;
         }
 
         private void buttonChooseBSP_Click(object sender, EventArgs e)
@@ -65,6 +67,8 @@ namespace QuakeMapDBEditor
             Map.Cooperative = checkBoxCooperative.Checked;
             Map.Bots = checkBoxBots.Checked;
             Map.Singleplayer = checkBoxSingleplayer.Checked;
+            Map.Horde = checkBoxHorde.Checked;
+            Map.CTF = checkBoxCTF.Checked;
 
             this.DialogResult = DialogResult.OK;
             this.Close();

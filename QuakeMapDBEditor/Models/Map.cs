@@ -20,6 +20,8 @@ namespace QuakeMapDBEditor.Models
         public bool Bots { get; set; }
         [JsonPropertyName("sp")]
         public bool Singleplayer { get; set; }
+        public bool CTF { get; set; }
+        public bool Horde { get; set; }
 
 
         public override string ToString() => $"{BSP}: {Title}";
