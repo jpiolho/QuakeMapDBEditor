@@ -204,7 +204,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:QuakeMapDBEditor"
         "ProductCode" = "8:{95F38C62-9287-41D3-B2B1-8E2679C3BBF2}"
-        "PackageCode" = "8:{B901BD9D-F51B-4CAA-8A68-42A5164F9169}"
+        "PackageCode" = "8:{C9763A50-605D-483C-B8A7-4F6CC013D637}"
         "UpgradeCode" = "8:{4AAE65B4-3A12-4EA1-AD1F-CB730DC694CF}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -215,7 +215,7 @@
         "Manufacturer" = "8:JPiolho"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:QuakeMapDBEditor"
+        "Title" = "8:Quake MapDB Editor"
         "Subject" = "8:"
         "ARPCONTACT" = "8:JPiolho"
         "Keywords" = "8:"
@@ -326,7 +326,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_49F610770B7948D7A1FD7145991BCDB9"
             {
-            "Name" = "8:QuakeMapDBEditor"
+            "Name" = "8:Quake MapDB Editor"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -340,7 +340,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A15DF7BEF90F40348BAE22FCB5EA7E5F"
             {
-            "Name" = "8:QuakeMapDBEditor"
+            "Name" = "8:Quake MapDB Editor"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
