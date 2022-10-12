@@ -35,7 +35,8 @@ namespace QuakeMapDBEditor
             comboBoxGame.Items.AddRange(episodes);
 
             comboBoxEpisode.SelectedItem = Episode.Directory;
-            comboBoxGame.SelectedItem = Map.Game ?? Episode.Directory;
+            comboBoxGame.Text = (string)(comboBoxGame.SelectedItem = Map.Game ?? Episode.Directory);
+            
 
             textBoxTitle.Text = Map.Title;
             textBoxBSP.Text = Map.BSP;
@@ -61,7 +62,7 @@ namespace QuakeMapDBEditor
             Map.Title = textBoxTitle.Text;
             Map.BSP = textBoxBSP.Text;
             Map.Episode = comboBoxEpisode.SelectedItem as string;
-            Map.Game = comboBoxEpisode.SelectedItem as string;
+            Map.Game = comboBoxGame.Text;
 
             Map.Deathmatch = checkBoxDeathmatch.Checked;
             Map.Cooperative = checkBoxCooperative.Checked;
