@@ -64,9 +64,9 @@ namespace QuakeMapDBEditor
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 31);
+            this.label1.Location = new System.Drawing.Point(14, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 15);
+            this.label1.Size = new System.Drawing.Size(65, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Episode:";
             // 
@@ -76,21 +76,24 @@ namespace QuakeMapDBEditor
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxEpisodes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEpisodes.FormattingEnabled = true;
-            this.comboBoxEpisodes.Location = new System.Drawing.Point(69, 27);
+            this.comboBoxEpisodes.Location = new System.Drawing.Point(79, 36);
+            this.comboBoxEpisodes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxEpisodes.Name = "comboBoxEpisodes";
-            this.comboBoxEpisodes.Size = new System.Drawing.Size(312, 23);
+            this.comboBoxEpisodes.Size = new System.Drawing.Size(356, 28);
             this.comboBoxEpisodes.TabIndex = 1;
             this.comboBoxEpisodes.SelectedIndexChanged += new System.EventHandler(this.comboBoxEpisodes_SelectedIndexChanged);
             // 
             // menuStrip
             // 
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.toolsToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(480, 24);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
+            this.menuStrip.Size = new System.Drawing.Size(549, 30);
             this.menuStrip.TabIndex = 2;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -104,46 +107,46 @@ namespace QuakeMapDBEditor
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "&File";
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.saveAsToolStripMenuItem.Text = "Save As...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(120, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -152,13 +155,13 @@ namespace QuakeMapDBEditor
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.autoGenerateToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // autoGenerateToolStripMenuItem
             // 
             this.autoGenerateToolStripMenuItem.Name = "autoGenerateToolStripMenuItem";
-            this.autoGenerateToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.autoGenerateToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
             this.autoGenerateToolStripMenuItem.Text = "Auto generate...";
             this.autoGenerateToolStripMenuItem.Click += new System.EventHandler(this.autoGenerateToolStripMenuItem_Click);
             // 
@@ -167,13 +170,13 @@ namespace QuakeMapDBEditor
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem1});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.aboutToolStripMenuItem.Text = "&Help";
             // 
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(133, 26);
             this.aboutToolStripMenuItem1.Text = "&About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
@@ -181,9 +184,10 @@ namespace QuakeMapDBEditor
             // 
             this.buttonAddEpisode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddEpisode.Image = global::QuakeMapDBEditor.Properties.Resources.Add_16x;
-            this.buttonAddEpisode.Location = new System.Drawing.Point(387, 27);
+            this.buttonAddEpisode.Location = new System.Drawing.Point(442, 36);
+            this.buttonAddEpisode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonAddEpisode.Name = "buttonAddEpisode";
-            this.buttonAddEpisode.Size = new System.Drawing.Size(23, 23);
+            this.buttonAddEpisode.Size = new System.Drawing.Size(26, 31);
             this.buttonAddEpisode.TabIndex = 3;
             this.toolTip.SetToolTip(this.buttonAddEpisode, "Add episode...");
             this.buttonAddEpisode.UseVisualStyleBackColor = true;
@@ -193,9 +197,10 @@ namespace QuakeMapDBEditor
             // 
             this.buttonEditEpisode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonEditEpisode.Image = global::QuakeMapDBEditor.Properties.Resources.Edit_16x;
-            this.buttonEditEpisode.Location = new System.Drawing.Point(416, 27);
+            this.buttonEditEpisode.Location = new System.Drawing.Point(475, 36);
+            this.buttonEditEpisode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonEditEpisode.Name = "buttonEditEpisode";
-            this.buttonEditEpisode.Size = new System.Drawing.Size(23, 23);
+            this.buttonEditEpisode.Size = new System.Drawing.Size(26, 31);
             this.buttonEditEpisode.TabIndex = 4;
             this.toolTip.SetToolTip(this.buttonEditEpisode, "Edit episode...");
             this.buttonEditEpisode.UseVisualStyleBackColor = true;
@@ -205,9 +210,10 @@ namespace QuakeMapDBEditor
             // 
             this.buttonDeleteEpisode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonDeleteEpisode.Image = global::QuakeMapDBEditor.Properties.Resources.Trash_16x;
-            this.buttonDeleteEpisode.Location = new System.Drawing.Point(445, 27);
+            this.buttonDeleteEpisode.Location = new System.Drawing.Point(509, 36);
+            this.buttonDeleteEpisode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonDeleteEpisode.Name = "buttonDeleteEpisode";
-            this.buttonDeleteEpisode.Size = new System.Drawing.Size(23, 23);
+            this.buttonDeleteEpisode.Size = new System.Drawing.Size(26, 31);
             this.buttonDeleteEpisode.TabIndex = 5;
             this.toolTip.SetToolTip(this.buttonDeleteEpisode, "Delete episode...");
             this.buttonDeleteEpisode.UseVisualStyleBackColor = true;
@@ -229,10 +235,12 @@ namespace QuakeMapDBEditor
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxMaps.FormattingEnabled = true;
-            this.listBoxMaps.ItemHeight = 15;
-            this.listBoxMaps.Location = new System.Drawing.Point(69, 56);
+            this.listBoxMaps.ItemHeight = 20;
+            this.listBoxMaps.Location = new System.Drawing.Point(79, 75);
+            this.listBoxMaps.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listBoxMaps.Name = "listBoxMaps";
-            this.listBoxMaps.Size = new System.Drawing.Size(399, 394);
+            this.listBoxMaps.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listBoxMaps.Size = new System.Drawing.Size(455, 524);
             this.listBoxMaps.TabIndex = 6;
             this.listBoxMaps.SelectedIndexChanged += new System.EventHandler(this.listBoxMaps_SelectedIndexChanged);
             this.listBoxMaps.DoubleClick += new System.EventHandler(this.listBoxMaps_DoubleClick);
@@ -241,9 +249,9 @@ namespace QuakeMapDBEditor
             // labelMaps
             // 
             this.labelMaps.AutoSize = true;
-            this.labelMaps.Location = new System.Drawing.Point(24, 59);
+            this.labelMaps.Location = new System.Drawing.Point(27, 79);
             this.labelMaps.Name = "labelMaps";
-            this.labelMaps.Size = new System.Drawing.Size(39, 15);
+            this.labelMaps.Size = new System.Drawing.Size(48, 20);
             this.labelMaps.TabIndex = 7;
             this.labelMaps.Text = "Maps:";
             // 
@@ -251,9 +259,10 @@ namespace QuakeMapDBEditor
             // 
             this.buttonAddMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddMap.Image = global::QuakeMapDBEditor.Properties.Resources.Add_16x;
-            this.buttonAddMap.Location = new System.Drawing.Point(321, 456);
+            this.buttonAddMap.Location = new System.Drawing.Point(367, 608);
+            this.buttonAddMap.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonAddMap.Name = "buttonAddMap";
-            this.buttonAddMap.Size = new System.Drawing.Size(23, 23);
+            this.buttonAddMap.Size = new System.Drawing.Size(26, 31);
             this.buttonAddMap.TabIndex = 8;
             this.toolTip.SetToolTip(this.buttonAddMap, "Add map...");
             this.buttonAddMap.UseVisualStyleBackColor = true;
@@ -263,9 +272,10 @@ namespace QuakeMapDBEditor
             // 
             this.buttonEditMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonEditMap.Image = global::QuakeMapDBEditor.Properties.Resources.Edit_16x;
-            this.buttonEditMap.Location = new System.Drawing.Point(350, 456);
+            this.buttonEditMap.Location = new System.Drawing.Point(400, 608);
+            this.buttonEditMap.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonEditMap.Name = "buttonEditMap";
-            this.buttonEditMap.Size = new System.Drawing.Size(23, 23);
+            this.buttonEditMap.Size = new System.Drawing.Size(26, 31);
             this.buttonEditMap.TabIndex = 9;
             this.toolTip.SetToolTip(this.buttonEditMap, "Edit map...");
             this.buttonEditMap.UseVisualStyleBackColor = true;
@@ -275,9 +285,10 @@ namespace QuakeMapDBEditor
             // 
             this.buttonDeleteMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonDeleteMap.Image = global::QuakeMapDBEditor.Properties.Resources.Trash_16x;
-            this.buttonDeleteMap.Location = new System.Drawing.Point(379, 456);
+            this.buttonDeleteMap.Location = new System.Drawing.Point(433, 608);
+            this.buttonDeleteMap.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonDeleteMap.Name = "buttonDeleteMap";
-            this.buttonDeleteMap.Size = new System.Drawing.Size(23, 23);
+            this.buttonDeleteMap.Size = new System.Drawing.Size(26, 31);
             this.buttonDeleteMap.TabIndex = 10;
             this.toolTip.SetToolTip(this.buttonDeleteMap, "Delete map...");
             this.buttonDeleteMap.UseVisualStyleBackColor = true;
@@ -287,9 +298,10 @@ namespace QuakeMapDBEditor
             // 
             this.buttonMapMoveDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonMapMoveDown.Image = global::QuakeMapDBEditor.Properties.Resources.Download_16x;
-            this.buttonMapMoveDown.Location = new System.Drawing.Point(445, 456);
+            this.buttonMapMoveDown.Location = new System.Drawing.Point(509, 608);
+            this.buttonMapMoveDown.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonMapMoveDown.Name = "buttonMapMoveDown";
-            this.buttonMapMoveDown.Size = new System.Drawing.Size(23, 23);
+            this.buttonMapMoveDown.Size = new System.Drawing.Size(26, 31);
             this.buttonMapMoveDown.TabIndex = 11;
             this.toolTip.SetToolTip(this.buttonMapMoveDown, "Add map...");
             this.buttonMapMoveDown.UseVisualStyleBackColor = true;
@@ -299,9 +311,10 @@ namespace QuakeMapDBEditor
             // 
             this.buttonMapMoveUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonMapMoveUp.Image = global::QuakeMapDBEditor.Properties.Resources.Upload_16x;
-            this.buttonMapMoveUp.Location = new System.Drawing.Point(416, 456);
+            this.buttonMapMoveUp.Location = new System.Drawing.Point(475, 608);
+            this.buttonMapMoveUp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonMapMoveUp.Name = "buttonMapMoveUp";
-            this.buttonMapMoveUp.Size = new System.Drawing.Size(23, 23);
+            this.buttonMapMoveUp.Size = new System.Drawing.Size(26, 31);
             this.buttonMapMoveUp.TabIndex = 12;
             this.toolTip.SetToolTip(this.buttonMapMoveUp, "Add map...");
             this.buttonMapMoveUp.UseVisualStyleBackColor = true;
@@ -312,16 +325,16 @@ namespace QuakeMapDBEditor
             this.separator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.separator.AutoSize = true;
             this.separator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.separator.Location = new System.Drawing.Point(408, 460);
+            this.separator.Location = new System.Drawing.Point(466, 613);
             this.separator.Name = "separator";
-            this.separator.Size = new System.Drawing.Size(2, 17);
+            this.separator.Size = new System.Drawing.Size(2, 22);
             this.separator.TabIndex = 13;
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 491);
+            this.ClientSize = new System.Drawing.Size(549, 655);
             this.Controls.Add(this.separator);
             this.Controls.Add(this.buttonMapMoveUp);
             this.Controls.Add(this.buttonMapMoveDown);
@@ -337,6 +350,7 @@ namespace QuakeMapDBEditor
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormMain";
             this.Text = "Quake MapDB Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);

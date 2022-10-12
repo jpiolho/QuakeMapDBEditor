@@ -36,10 +36,9 @@ namespace QuakeMapDBEditor
             get => comboBoxEpisodes.SelectedItem as Episode;
             set => comboBoxEpisodes.SelectedItem = value;
         }
-        public Map SelectedMap
+        public IEnumerable<Map> SelectedMaps
         {
-            get => listBoxMaps.SelectedItem as Map;
-            set => listBoxMaps.SelectedItem = value;
+            get => listBoxMaps.SelectedItems.OfType<Map>();
         }
 
         public FormMain()
@@ -53,11 +52,11 @@ namespace QuakeMapDBEditor
             buttonDeleteEpisode.Enabled = comboBoxEpisodes.SelectedIndex >= 0;
 
             buttonAddMap.Enabled = comboBoxEpisodes.SelectedIndex >= 0;
-            buttonDeleteMap.Enabled = listBoxMaps.SelectedIndex >= 0;
-            buttonEditMap.Enabled = listBoxMaps.SelectedIndex >= 0;
+            buttonDeleteMap.Enabled = listBoxMaps.SelectedIndices.Count >= 0;
+            buttonEditMap.Enabled = listBoxMaps.SelectedIndices.Count == 1;
 
-            buttonMapMoveUp.Enabled = listBoxMaps.SelectedIndex > 0;
-            buttonMapMoveDown.Enabled = listBoxMaps.SelectedIndex >= 0 && listBoxMaps.SelectedIndex < listBoxMaps.Items.Count - 1;
+            buttonMapMoveUp.Enabled = listBoxMaps.SelectedIndices.Count == 1 && listBoxMaps.SelectedIndex > 0;
+            buttonMapMoveDown.Enabled = listBoxMaps.SelectedIndices.Count == 1 && listBoxMaps.SelectedIndex >= 0 && listBoxMaps.SelectedIndex < listBoxMaps.Items.Count - 1;
         }
 
 
@@ -238,7 +237,7 @@ namespace QuakeMapDBEditor
 
         private void listBoxMaps_DoubleClick(object sender, EventArgs e)
         {
-            if (SelectedMap == null)
+            if (SelectedMaps == null)
                 return;
 
             buttonEditMap_Click(sender, e);
@@ -246,7 +245,7 @@ namespace QuakeMapDBEditor
 
         private void listBoxMaps_KeyDown(object sender, KeyEventArgs e)
         {
-            if (SelectedMap == null)
+            if (SelectedMaps == null)
                 return;
 
             // Press 'delete' button if the key delete was pressed
@@ -256,10 +255,22 @@ namespace QuakeMapDBEditor
 
         private void buttonDeleteMap_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Are you sure you want to delete the map '{SelectedMap}'?", "Delete map", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
-                return;
+            if (SelectedMaps.Count() == 1)
+            {
+                var map = SelectedMaps.First();
+                if (MessageBox.Show($"Are you sure you want to delete the map '{map}'?", "Delete map", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+                    return;
+            }
+            else
+            {
+                var count = SelectedMaps.Count();
+                if (MessageBox.Show($"Are you sure you want to delete {count} maps?", "Delete map", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+                    return;
+            }
 
-            _database.Maps.Remove(SelectedMap);
+            foreach(var map in SelectedMaps)
+                _database.Maps.Remove(map);
+
             MarkDirty();
 
             PopulateMaps();
