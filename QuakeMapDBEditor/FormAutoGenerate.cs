@@ -188,54 +188,64 @@ namespace QuakeMapDBEditor
                 for (var i = 0; i < checkedListBoxMods.CheckedItems.Count; i++)
                 {
                     var mod = (string)checkedListBoxMods.CheckedItems[i];
-
-                    var maps = new List<Map>();
-                    var folders = new string[]
+                    
+                    try
                     {
+
+                        var maps = new List<Map>();
+                        var folders = new string[]
+                        {
                         Path.Combine(root,mod),
                         Path.Combine(savedRoot,mod)
-                    };
+                        };
 
-                    foreach (var folder in folders)
-                    {
-                        if (Directory.Exists(folder))
+                        foreach (var folder in folders)
                         {
-                            maps.AddRange(await GetAllMapsInModFolderAsync(folder));
+                            if (Directory.Exists(folder))
+                            {
+                                maps.AddRange(await GetAllMapsInModFolderAsync(folder));
+                            }
                         }
+
+                        // Don't add empty mods
+                        if (maps.Count == 0)
+                            continue;
+
+
+                        // Add the episode
+                        var episode = new Episode();
+                        episode.Directory = mod;
+                        episode.Name = await GetModNameAsync(mod, folders);
+                        db.Episodes.Add(episode);
+
+                        // Sort the maps
+                        if (checkBoxSortMapsAlphabetically.Checked)
+                            maps = maps.OrderBy(m => m.BSP).ToList();
+
+                        // Add the maps
+                        foreach (var map in maps)
+                        {
+                            map.Episode = episode.Directory;
+                            map.Game = map.Episode;
+
+                            db.Maps.Add(map);
+                        }
+
                     }
-
-                    // Don't add empty mods
-                    if (maps.Count == 0)
-                        continue;
-
-
-                    // Add the episode
-                    var episode = new Episode();
-                    episode.Directory = mod;
-                    episode.Name = await GetModNameAsync(mod,folders);
-                    db.Episodes.Add(episode);
-
-                    // Sort the maps
-                    if (checkBoxSortMapsAlphabetically.Checked)
-                        maps = maps.OrderBy(m => m.BSP).ToList();
-
-                    // Add the maps
-                    foreach (var map in maps)
+                    catch (Exception ex)
                     {
-                        map.Episode = episode.Directory;
-                        map.Game = map.Episode;
-
-                        db.Maps.Add(map);
+                        _generationExceptions.Add((mod, ex));
                     }
-
-                    
-                    progressBar.Value = i + 1;
+                    finally
+                    {
+                        progressBar.Value = i + 1;
+                    }
                 }
 
             }
             catch(Exception ex)
             {
-                MessageBox.Show($"An exception occured while generating: {ex.ToString()}", "Failed to generate", MessageBoxButtons.OK);
+                MessageBox.Show($"An unhandled exception occured while generating: {ex.ToString()}", "Failed to generate", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             finally
@@ -286,72 +296,86 @@ namespace QuakeMapDBEditor
             var maps = new List<Map>();
 
             var exceptionModFolder = Path.GetFileName(modFolder);
-            
 
 
-            int pakNumber = 0;
-            string currentPak;
-            // Add maps from sequential paks, starting at 0.
-            while (File.Exists(currentPak = Path.Combine(modFolder, $"pak{pakNumber++}.pak")))
+
+            if (checkBoxIgnorePakFiles.Checked == false)
             {
-                var exceptionPak = Path.GetFileName(currentPak);
-
-                PakFile pak = await PakFile.FromFileAsync(currentPak);
-
-                foreach (var entry in pak.Entries)
+                int pakNumber = 0;
+                string currentPak;
+                // Add maps from sequential paks, starting at 0.
+                while (File.Exists(currentPak = Path.Combine(modFolder, $"pak{pakNumber++}.pak")))
                 {
-                    if (Path.GetExtension(entry.Name).ToUpperInvariant() != ".BSP")
-                        continue;
+                    var exceptionPak = Path.GetFileName(currentPak);
 
+                    PakFile pak = await PakFile.FromFileAsync(currentPak);
 
-                    try
+                    foreach (var entry in pak.Entries)
                     {
-                        if (Path.GetDirectoryName(entry.Name) == "maps")
-                        {
-                            var bspName = Path.GetFileNameWithoutExtension(entry.Name);
+                        if (Path.GetExtension(entry.Name).ToUpperInvariant() != ".BSP")
+                            continue;
 
-                            // Parse BSP
-                            var info = GetMapFromBSP(entry.Data);
-                            info.BSP = bspName;
-                            info.Bots = HasBotSupport(bspName, modFolder, pak);
+
+                        try
+                        {
+                            if (Path.GetDirectoryName(entry.Name) == "maps")
+                            {
+                                var bspName = Path.GetFileNameWithoutExtension(entry.Name);
+
+                                // Remove duplicate map
+                                if (checkBoxRemoveDuplicates.Checked && maps.Any(m => m.BSP == bspName))
+                                    continue;
+
+                                // Parse BSP
+                                var info = GetMapFromBSP(entry.Data);
+                                info.BSP = bspName;
+                                info.Bots = HasBotSupport(bspName, modFolder, pak);
+
+                                if (info.Singleplayer || info.Deathmatch || info.Cooperative)
+                                    maps.Add(info);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            _generationExceptions.Add(($"{exceptionModFolder}:{exceptionPak}:{entry.Name}", ex));
+                        }
+                    }
+
+                    pak = null;
+                    GC.Collect(); // Try to reclaim memory from the pak
+                }
+            }
+
+            // Add maps from the mod/maps folder 
+            if (checkBoxIgnoreLooseMaps.Checked == false)
+            {
+                var dirInfo = new DirectoryInfo(Path.Combine(modFolder, "maps"));
+                if (dirInfo.Exists)
+                {
+                    foreach (var bsp in dirInfo.GetFiles("*.bsp"))
+                    {
+                        try
+                        {
+                            var info = GetMapFromBSP(await File.ReadAllBytesAsync(bsp.FullName));
+
+                            info.BSP = Path.GetFileNameWithoutExtension(bsp.Name);
+
+                            // Remove duplicate map
+                            if (checkBoxRemoveDuplicates.Checked && maps.Any(m => m.BSP == info.BSP))
+                                continue;
+
+                            info.Bots = HasBotSupport(info.BSP, modFolder, null);
 
                             if (info.Singleplayer || info.Deathmatch || info.Cooperative)
                                 maps.Add(info);
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        _generationExceptions.Add(($"{exceptionModFolder}:{exceptionPak}:{entry.Name}",ex));
-                    }
-                }
-
-                pak = null;
-                GC.Collect(); // Try to reclaim memory from the pak
-            }
-
-            // Add maps from the mod/maps folder 
-            var dirInfo = new DirectoryInfo(Path.Combine(modFolder, "maps"));
-            if (dirInfo.Exists)
-            {
-                foreach (var bsp in dirInfo.GetFiles("*.bsp"))
-                {
-                    try
-                    {
-                        var info = GetMapFromBSP(await File.ReadAllBytesAsync(bsp.FullName));
-
-                        info.BSP = Path.GetFileNameWithoutExtension(bsp.Name);
-                        info.Bots = HasBotSupport(info.BSP, modFolder, null);
-
-                        if (info.Singleplayer || info.Deathmatch || info.Cooperative)
-                            maps.Add(info);
-                    }
-                    catch(Exception ex)
-                    {
-                        _generationExceptions.Add(($"{exceptionModFolder}:{bsp.Name}", ex));
+                        catch (Exception ex)
+                        {
+                            _generationExceptions.Add(($"{exceptionModFolder}:{bsp.Name}", ex));
+                        }
                     }
                 }
             }
-
 
 
             return maps.ToArray();
@@ -600,6 +624,9 @@ namespace QuakeMapDBEditor
             textBoxQuakeFolder.ReadOnly = _generating;
 
             checkBoxSortMapsAlphabetically.Enabled = !_generating;
+            checkBoxIgnoreLooseMaps.Enabled = !_generating;
+            checkBoxIgnorePakFiles.Enabled = !_generating;
+            checkBoxRemoveDuplicates.Enabled = !_generating;
         }
 
         private void textBoxSavedGamesFolder_KeyDown(object sender, KeyEventArgs e)
