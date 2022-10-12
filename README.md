@@ -4,10 +4,6 @@ A .NET Core utility program to edit Quake 2021 Enhanced mapdb.json
 
 ![Program](/docs/program.png)
 
-## Requirements
-
-* .NET Core 5.0 with Desktop Runtime
-
 ## Auto Generation
 
 The editor features a tool that allows auto generating map and mod entries by searching and analyzing installed mods on your computer.
