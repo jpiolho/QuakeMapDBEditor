@@ -58,6 +58,8 @@ namespace QuakeMapDBEditor
 
             buttonMapMoveUp.Enabled = listBoxMaps.SelectedIndices.Count == 1 && listBoxMaps.SelectedIndex > 0;
             buttonMapMoveDown.Enabled = listBoxMaps.SelectedIndices.Count == 1 && listBoxMaps.SelectedIndex >= 0 && listBoxMaps.SelectedIndex < listBoxMaps.Items.Count - 1;
+
+            buttonMapSort.Enabled = comboBoxEpisodes.SelectedIndex >= 0;
         }
 
 
@@ -516,6 +518,23 @@ namespace QuakeMapDBEditor
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             new FormAbout().ShowDialog();
+        }
+
+        private void buttonMapSort_Click(object sender, EventArgs e)
+        {
+            contextMenuStripSort.Show(buttonMapSort, 0, buttonMapSort.Height);
+        }
+
+        private void byTitleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _database.Maps = _database.Maps.OrderBy(m => m.Title).ToList();
+            PopulateMaps();
+        }
+
+        private void byBspToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _database.Maps = _database.Maps.OrderBy(m => m.BSP).ToList();
+            PopulateMaps();
         }
     }
 }
