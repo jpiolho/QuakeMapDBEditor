@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <RootNamespace>QuakeMapDBEditor</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>QuakeMapDBEditor</AssemblyName>
@@ -11,12 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Gameloop.Vdf" Version="0.6.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="QuakePakSharp">
-      <HintPath>..\..\QuakePakSharp\QuakePakSharp\bin\Debug\net5.0\QuakePakSharp.dll</HintPath>
-    </Reference>
+    <PackageReference Include="QuakePakSharp" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
