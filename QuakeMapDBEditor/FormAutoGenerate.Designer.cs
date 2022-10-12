@@ -29,6 +29,7 @@ namespace QuakeMapDBEditor
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxQuakeFolder = new System.Windows.Forms.TextBox();
             this.buttonChooseFolder = new System.Windows.Forms.Button();
@@ -49,6 +50,7 @@ namespace QuakeMapDBEditor
             this.checkBoxIgnorePakFiles = new System.Windows.Forms.CheckBox();
             this.checkBoxIgnoreLooseMaps = new System.Windows.Forms.CheckBox();
             this.checkBoxSortMapsAlphabetically = new System.Windows.Forms.CheckBox();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.groupBoxOptions.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -224,6 +226,7 @@ namespace QuakeMapDBEditor
             this.checkBoxRemoveDuplicates.Size = new System.Drawing.Size(157, 24);
             this.checkBoxRemoveDuplicates.TabIndex = 3;
             this.checkBoxRemoveDuplicates.Text = "Remove duplicates";
+            this.toolTip.SetToolTip(this.checkBoxRemoveDuplicates, "If enabled, maps with the same bsp name will be skipped");
             this.checkBoxRemoveDuplicates.UseVisualStyleBackColor = true;
             // 
             // checkBoxIgnorePakFiles
@@ -235,6 +238,7 @@ namespace QuakeMapDBEditor
             this.checkBoxIgnorePakFiles.Size = new System.Drawing.Size(191, 24);
             this.checkBoxIgnorePakFiles.TabIndex = 2;
             this.checkBoxIgnorePakFiles.Text = "Ignore maps inside paks";
+            this.toolTip.SetToolTip(this.checkBoxIgnorePakFiles, "If enabled, it\'ll skip maps that are inside pak files");
             this.checkBoxIgnorePakFiles.UseVisualStyleBackColor = true;
             // 
             // checkBoxIgnoreLooseMaps
@@ -246,6 +250,7 @@ namespace QuakeMapDBEditor
             this.checkBoxIgnoreLooseMaps.Size = new System.Drawing.Size(154, 24);
             this.checkBoxIgnoreLooseMaps.TabIndex = 1;
             this.checkBoxIgnoreLooseMaps.Text = "Ignore loose maps";
+            this.toolTip.SetToolTip(this.checkBoxIgnoreLooseMaps, "If enabled, it\'ll skip maps that are not inside .pak files");
             this.checkBoxIgnoreLooseMaps.UseVisualStyleBackColor = true;
             // 
             // checkBoxSortMapsAlphabetically
@@ -257,6 +262,7 @@ namespace QuakeMapDBEditor
             this.checkBoxSortMapsAlphabetically.Size = new System.Drawing.Size(195, 24);
             this.checkBoxSortMapsAlphabetically.TabIndex = 0;
             this.checkBoxSortMapsAlphabetically.Text = "Sort maps alphabetically";
+            this.toolTip.SetToolTip(this.checkBoxSortMapsAlphabetically, "If enabled, the map order will be sorted by their map name");
             this.checkBoxSortMapsAlphabetically.UseVisualStyleBackColor = true;
             // 
             // FormAutoGenerate
@@ -315,5 +321,6 @@ namespace QuakeMapDBEditor
         private System.Windows.Forms.CheckBox checkBoxIgnoreLooseMaps;
         private System.Windows.Forms.CheckBox checkBoxIgnorePakFiles;
         private System.Windows.Forms.CheckBox checkBoxRemoveDuplicates;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
