@@ -477,6 +477,8 @@ namespace QuakeMapDBEditor
             info.Singleplayer = entities.Any(e => e.TryGetValue("classname", out var classname) && classname == "info_player_start");
             info.Deathmatch = entities.Any(e => e.TryGetValue("classname", out var classname) && classname == "info_player_deathmatch");
             info.Cooperative = entities.Any(e => e.TryGetValue("classname", out var classname) && classname == "info_player_coop");
+            info.CTF = entities.Any(e => e.TryGetValue("classname", out var classname) && (classname == "item_flag_team1" || classname == "item_flag_team2"));
+            info.Horde = entities.Any(e => e.TryGetValue("classname", out var classname) && classname == "horde_manager");
 
             // TODO: Figure out something in case mod uses custom entities for deathmatch, coop and single player. Probably very few exist though.
 
