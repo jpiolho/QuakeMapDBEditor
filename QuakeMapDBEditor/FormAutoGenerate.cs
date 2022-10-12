@@ -137,7 +137,7 @@ namespace QuakeMapDBEditor
             UpdateModList();
         }
 
-        private string GetQuakeSteamInstallPath()
+        private static string GetQuakeSteamInstallPath()
         {
             var steamInstallPath = Registry.GetValue(Environment.Is64BitOperatingSystem ? @"HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Valve\Steam" : @"HKEY_LOCAL_MACHINE\SOFTWARE\Valve\Steam", "InstallPath", null);
             if (steamInstallPath == null)
@@ -154,7 +154,7 @@ namespace QuakeMapDBEditor
             int dirId = 0;
             var libraryFolders = vdf.Value;
             dynamic dir;
-            while ((dir = libraryFolders[dirId.ToString()]) != null)
+            while ((dir = libraryFolders[(dirId++).ToString()]) != null)
             {
                 if (dir["apps"]["2310"] != null)
                 {
